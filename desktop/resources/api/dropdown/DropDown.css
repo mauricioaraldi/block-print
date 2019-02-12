@@ -1,0 +1,64 @@
+﻿/** MENU **/
+.dd-menu {
+	background: #2C6FB2;
+	border: 1px solid #000000;
+	color: #FFFFFF;
+	display: none;
+	margin: 0;
+	min-width: 100px;
+	padding: 0;
+    position: fixed;
+    text-shadow: 1px 1px 1px #444444;
+	z-index: 101;
+}
+
+
+
+/** SUBMENU **/
+.dd-submenu {
+	background: url(../../images/right-arrow.png) no-repeat 90% 50%;
+}
+
+.dd-submenu > label {
+	pointer-events: none;
+}
+
+
+
+/** ITENS **/
+.dd-menu > a,
+.dd-menu > div {
+	border-bottom: 1px solid #FFFFFF;
+	cursor: pointer;
+	display: block;
+	padding: .3em;
+	
+	/* Prevents Selection */
+	user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: -moz-none;
+	-ms-user-select: none;
+	-webkit-user-select: none;
+}
+
+.dd-menu > a:last-child,
+.dd-menu > div:last-child {
+	border-bottom: none;
+}
+
+.dd-menu > a:hover,
+.dd-menu > div:hover {
+	background-color: #9ACEFF;
+}
+
+
+
+/** SCREEN BLOCK **/
+#dd-screen-block {
+	bottom: 0;
+	left: 0;
+	position: fixed;
+	right: 0;
+	top: 0;
+	z-index: 99;
+}

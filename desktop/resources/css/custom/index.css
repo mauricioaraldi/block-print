@@ -1,0 +1,286 @@
+﻿/** GENERAL **/
+
+@font-face {
+  font-family: 'Gloria Hallelujah';
+  font-style: normal;
+  font-weight: 400;
+  src: url("../../fonts/gloria-hallelujah.woff");
+}
+
+body {
+	background-color: #BBBBBB;
+	font-family: 'Gloria Hallelujah';
+	overflow: scroll;
+}
+
+.btn {
+	border: 1px solid #2C6FB2;
+	cursor: pointer;
+	display: inline-block;
+	margin: 1em;
+	padding: .5em;
+
+	/* Prevents Selection */
+	user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: -moz-none;
+	-ms-user-select: none;
+	-webkit-user-select: none;
+}
+
+.btn:hover,
+.btn:active {
+	background-color: #9ACEFF;
+}
+
+.hidden {
+	display: none;
+}
+
+.screen-block {
+	bottom: 0;
+	left: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+	z-index: 2;
+}
+
+.screen-block.darken {
+	background-color: rgba(0, 0, 0, .4);
+}
+
+#workspace-string,
+#map-json, 
+#blockSet-json { 
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	height: 100%;
+	overflow: scroll;
+	width: 100%;
+}
+
+.lb {
+	display: block;
+}
+/** END GENERAL **/
+
+
+
+/** TOP PORTION **/
+
+#top-bar {
+	background-color: #2C6FB2;
+	border-bottom: 1px solid #AAAAAA;
+	color: #FFFFFF;
+	cursor: pointer;
+	font-size: 14pt;
+	height: 26px;
+	line-height: 26px;
+	position: fixed;
+	width: 100%;
+	z-index: 3;
+}
+
+#top-bar > a {
+	border-right: 1px solid #FFFFFF;
+	display: inline-block;
+	padding: 0 1em;
+	text-shadow: 1px 1px 1px #444444;
+}
+
+#top-bar > a:not(:first-child) {
+	margin-left: -9px;
+}
+
+#top-bar a:hover {
+	background-color: #9ACEFF;
+}
+
+/** END TOP PORTION **/
+
+
+
+/** LEFT PORTION **/
+
+#left-bar {
+	background-color: #FFFFFF;
+	border-right: 1px solid #2C6FB2;
+	bottom: 0;
+	left: 0;
+	position: fixed;
+	text-align: center;
+	top: 26px;
+	width: 10%;
+	z-index: 3;
+}
+
+/* Tools */
+#last-tools {
+	border-bottom: 1px solid #2C6FB2;
+	margin: .5em;
+	min-height: 72px;
+	overflow-x: auto;
+	white-space: nowrap;
+}
+
+#tools {
+	bottom: 0;
+	overflow: auto;
+	position: absolute;
+	top: 100px;
+	width: 100%;
+}
+
+.tool {
+	border: 1px solid #000000;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	display: inline-block;
+	height: 50px;
+	margin-right: .4em;
+	width: 50px;
+}
+
+.tool.active {
+	border-color: #2C6FB2;
+	box-shadow: 1px 1px 2px 2px #2C6FB2;
+}
+
+.tool img {
+	height: 50px;
+	width: 50px;
+}
+/* End Tools */
+
+/** END LEFT PORTION **/
+
+
+
+/** RIGHT PORTION **/
+
+#zoom-container {
+	left: 10%;
+	position: absolute;
+	top: 26px;
+	transform-origin: top left;
+}
+
+main {
+	overflow: auto;
+	position: absolute;
+}
+
+/* Stage */
+#canvas {
+	background-color: #FFFFFF;
+}
+
+.active-header,
+#column-headers div:hover,
+#line-headers div:hover {
+	background-color: #9ACEFF;
+}
+
+#grid {
+	left: 0;
+	pointer-events: none;
+	position: absolute;
+	top: 0;
+	z-index: 1;
+}
+
+#line-headers,
+#column-headers {
+	color: #2C6FB2;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	overflow: hidden;
+	transform-origin: left top;
+	z-index: 2;
+}
+
+#line-headers > div,
+#column-headers > div {
+	background-color: #FFFFFF;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	cursor: pointer;
+	text-align: center;
+}
+
+#line-headers {
+	border-left: 1px solid #2C6FB2;
+	position: absolute;
+	width: 2em;
+}
+
+#line-headers > div {
+	border-bottom: 2px solid #2C6FB2;
+	border-right: 1px solid #2C6FB2;
+	padding: 8.5px 0;
+	width: 100%;
+}
+
+#line-headers > div:first-child {
+	border-top: 1px solid #2C6FB2;
+}
+
+#line-headers > div:last-child {
+	border-bottom: 1px solid #2C6FB2;
+}
+
+#column-headers {
+	height: 2em;
+	position: absolute;
+	white-space: nowrap;
+}
+
+#column-headers > div {
+	border-right: 2px solid #2C6FB2;
+	border-bottom: 1px solid #2C6FB2;
+	display: inline-block;
+	height: 100%;
+	width: 50px;
+}
+
+#column-headers > div:first-child {
+	border-left: 1px solid #2C6FB2;
+	width: 51px;
+}
+
+#column-headers > div:last-child {
+	border-right: 1px solid #2C6FB2;
+	width: 49px;
+}
+
+.highlighted {
+	background-color: rgba(255, 255, 0, 1) !important;
+}
+
+.highlight {
+	background-color: #FFFF00;
+	opacity: .5;
+	pointer-events: none;
+	position: absolute;
+}
+
+.line-highlight {
+	left: 0;
+}
+
+.column-highlight {
+	top: 0;
+}
+/* End Stage */
+
+/** END RIGHT PORTION **/
+
+
+
+/** POPUPS **/
+/** END POPUPS **/

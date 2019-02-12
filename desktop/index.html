@@ -1,0 +1,167 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<title>Block Print 0.8</title>
+		
+		<!-- JS APIs -->
+		<script type="text/javascript" src="resources/js/api/jquery/jquery-min.js"></script>
+		<script type="text/javascript" src="resources/js/api/mousewheel/jquery.mousewheel.js"></script>
+		<script type="text/javascript" src="resources/js/api/undomanager/undomanager.js"></script>
+		
+		<!-- JS CUSTOM -->
+		<script  type="text/javascript" src="resources/js/custom/app.js"></script>
+		<script  type="text/javascript" src="resources/js/custom/init.js"></script>
+		<script  type="text/javascript" src="resources/js/custom/keysControl.js"></script>
+		<script  type="text/javascript" src="resources/js/custom/stage.js"></script>
+		<script  type="text/javascript" src="resources/js/custom/fileMenu.js"></script>
+		<script  type="text/javascript" src="resources/js/custom/blockset.js"></script>
+		<script  type="text/javascript" src="resources/js/custom/map.js"></script>
+		<script  type="text/javascript" src="resources/js/custom/grid.js"></script>
+		<script  type="text/javascript" src="resources/js/custom/headers.js"></script>
+		<script  type="text/javascript" src="resources/js/custom/shortcut.js"></script>
+		<script  type="text/javascript" src="resources/js/custom/workspace.js"></script>
+		<script  type="text/javascript" src="resources/js/custom/settings.js"></script>
+		<script  type="text/javascript" src="resources/js/custom/tools.js"></script>
+
+		<!-- JS Objects -->
+		<script  type="text/javascript" src="resources/js/objects/Block.js"></script>
+		<script  type="text/javascript" src="resources/js/objects/FilledArray.js"></script>
+		
+		<!-- CSS API -->
+		<link rel="stylesheet" href="resources/css/api/clearfix.css"/>
+		<link rel="stylesheet" href="resources/css/api/normalize.css"/>
+		
+		<!-- CSS CUSTOM -->
+		<link rel="stylesheet" href="resources/css/custom/index.css" />
+		<link rel="stylesheet" href="resources/css/custom/sprite.css" />
+		
+		<!-- APIs -->
+		<!-- OpenTip -->
+		<script  type="text/javascript" src="resources/api/opentip/opentip-jquery.min.js"></script>
+		<link rel="stylesheet" href="resources/api/opentip/opentip.css" />
+		
+		<!-- Popups -->
+		<script  type="text/javascript" src="resources/api/popups/popups.js"></script>
+		<link rel="stylesheet" href="resources/api/popups/popups.css" />
+		
+		<!-- DropDown -->
+		<script  type="text/javascript" src="resources/api/dropdown/DropDown.js"></script>
+		<link rel="stylesheet" href="resources/api/dropdown/DropDown.css" />
+		
+		<!-- Noty -->
+		<script  type="text/javascript" src="resources/js/api/noty/jquery.noty.js"></script>
+		<script  type="text/javascript" src="resources/js/api/noty/layouts/bottomCenter.js"></script>
+		<script  type="text/javascript" src="resources/js/api/noty/themes/default.js"></script>
+		
+		<!-- i18n -->
+		<script type="text/javascript" src="resources/i18n/i18n.js"></script>
+
+		<link rel="shortcut icon" href="resources/images/logo-16.png">
+	</head>
+	<body>
+		<nav id="top-bar">
+			<a id="logo"><img src="resources/images/logo-16.png"/></a>
+			<a id="open-file-menu" data-i18n="file"></a>
+		</nav>
+		<section id="left-bar">
+			<div id="last-tools"></div>
+			<div id="tools">
+				<div></div>
+			</div>
+		</section>
+		
+		<div id="zoom-container">
+			<div id="column-headers"></div>
+			<div id="line-headers"></div>
+			
+			<main>
+				<canvas id="canvas"></canvas>
+				<canvas id="grid"></canvas>
+			</main>
+		</div>
+		
+		<input id="imgs" class="hidden" type="file" multiple/>
+		<input id="img-blockset-editor" class="hidden" type="file"/>
+
+		<!-- DROPDOWNS -->
+		<nav id="file-menu" class="dd-menu">
+			<a id="new-file-btn" data-i18n="fileMenu.newFile"></a>
+			<a id="load-images-btn" data-i18n="fileMenu.loadImages"></a>
+			<div class="dd-submenu">
+				<label data-i18n="workspace.workspace"></label>
+				<nav class="dd-menu">
+					<a id="save-workspace-btn" data-i18n="workspace.save"></a>
+					<a id="load-workspace-btn" data-i18n="workspace.load"></a>
+					<a id="export-workspace-btn" data-i18n="workspace.export"></a>
+					<a id="import-workspace-btn" data-i18n="workspace.import"></a>
+				</nav>
+			</div>
+			<div class="dd-submenu">
+				<label data-i18n="map.map"></label>
+				<nav class="dd-menu">
+					<a id="export-map-btn" data-i18n="map.export"></a>
+					<a id="import-map-btn" data-i18n="map.import"></a>
+					<a id="change-map-size-btn" data-i18n="settings.changeMapSize"></a>
+				</nav>
+			</div>
+			<div class="dd-submenu">
+				<label data-i18n="blockSet.blockSet"></label>
+				<nav class="dd-menu">
+					<a id="export-blockSet-btn" data-i18n="blockSet.export"></a>
+					<a id="import-blockSet-btn" data-i18n="blockSet.import"></a>
+				</nav>
+			</div>
+			<a id="generate-image-btn" data-i18n="fileMenu.generateImage"></a>
+		</nav>
+
+		<nav id="headers-line-contextmenu" class="dd-menu">
+			<a id="delete-line" data-i18n="headers.deleteLine"></a>
+			<a id="delete-highlighted-lines" data-i18n="headers.deleteHighlightedLines"></a>
+		</nav>
+
+		<nav id="headers-column-contextmenu" class="dd-menu">
+			<a id="delete-column" data-i18n="headers.deleteColumn"></a>
+			<a id="delete-highlighted-columns" data-i18n="headers.deleteHighlightedColumns"></a>
+		</nav>
+
+		<nav id="tool-contextmenu" class="dd-menu">
+			<a id="change-tool-block" data-i18n="tools.changeBlock"></a>
+			<a id="remove-tool-block" data-i18n="tools.removeBlock"></a>
+			<a class="add-tool-block" data-i18n="tools.addBlock"></a>
+		</nav>
+
+		<nav id="left-bar-contextmenu" class="dd-menu">
+			<a class="add-tool-block" data-i18n="tools.addBlock"></a>
+		</nav>
+		<!-- DROPDOWNS END -->
+		
+		<!-- POPUPS -->
+		<div id="app-popups" class="hidden">
+			<div id="workspace-popup-content">
+				<textarea type="text" id="workspace-string"></textarea>
+			</div>
+
+			<div id="map-popup-content">
+				<textarea type="text" id="map-json"></textarea>
+			</div>
+			
+			<div id="blockSet-popup-content">
+				<textarea type="text" id="blockSet-json"></textarea>
+			</div>
+			
+			<div id="change-size-popup-content">
+				<label class="lb">
+					<span data-i18n="settings.lines"></span>
+					<input id="lines-change-size" type="number"/>
+				</label>
+				<label class="lb">
+					<span data-i18n="settings.columns"></span>
+					<input id="columns-change-size" type="number" />
+				</label>
+			</div>
+		</div>
+		<!-- POPUPS END-->
+
+	</body>
+</html>

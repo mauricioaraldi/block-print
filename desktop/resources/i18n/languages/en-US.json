@@ -1,0 +1,54 @@
+﻿{
+	"file" : "File",
+	
+	"errorNoDataProvided" : "No data was provided",
+	"dataLoadedSuccessfully" : "Data loaded successfully",
+	"invalidDataProvided" : "Invalid data provided",
+	"dataSavedSuccessfully" : "Data saved successfully",
+	"noMapFound" : "No map found",
+	
+	"fileMenu": {
+		"newFile" : "New map",
+		"loadImages" : "Load images",
+		"generateImage" : "Generate image"
+	},
+	
+	"blockSet": {
+		"blockSet": "BlockSet",
+		"import" : "Import blockSet",
+		"export" : "Export blockSet"
+	},
+	
+	"map": {
+		"map": "Map",
+		"export" : "Export map",
+		"import" : "Import map"
+	},
+	
+	"settings": {
+		"changeMapSize" : "Change map size",
+		"lines" : "Lines",
+		"columns" : "Columns"
+	},
+
+	"headers": {
+		"deleteColumn" : "Delete column",
+		"deleteLine" : "Delete line",
+		"deleteHighlightedColumns" : "Delete highlighted columns",
+		"deleteHighlightedLines" : "Delete highlighted lines"
+	},
+
+	"tools": {
+		"addBlock": "Add block",
+		"changeBlock": "Change block",
+		"removeBlock": "Remove block"
+	},
+
+	"workspace": {
+		"workspace": "Workspace",
+		"save" : "Save workspace",
+		"load" : "Load workspace",
+		"export": "Export workspace",
+		"import": "Import workspace"
+	}
+}
